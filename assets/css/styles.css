@@ -5,9 +5,15 @@ body {
     text-align: center;
     padding: 20px;
 }
+
+
+
 h1 {
     color: #ffffff;
 }
+
+
+
 input, select, button {
     padding: 10px;
     margin: 5px;
@@ -15,6 +21,9 @@ input, select, button {
     border-radius: 4px;
     font-size: 16px;
 }
+
+
+
 .search-box {
     width: 60%;
     margin: 20px auto;
@@ -23,17 +32,26 @@ input, select, button {
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(128, 90, 213, 0.5);
 }
+
+
+
 .search-input {
     width: 70%;
     background-color: #0e0e0e;
     color: white;
     border: 1px solid #5a32b6;
 }
+
+
+
 .search-button {
     background-color: #a259ff;
     color: white;
     cursor: pointer;
 }
+
+
+
 .info-text {
     margin-top: 50px;
     font-size: 18px;
