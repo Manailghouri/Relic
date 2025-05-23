@@ -3,7 +3,8 @@ Relic lets you search any topic and instantly compare headlines from the past an
 
 
 // TODO
-- Make a dummy frontend
+- Make a dummy frontend (done)
+- make/configure database
 - Connect to database
 - Write php functions to perform CRUD
 - Connect the frontend javascript with backend php
