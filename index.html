@@ -1,0 +1,80 @@
+// Roha to Laiba and Manail : find dummy php function on line 59
+// This needs to be changed to whatever the php function is defined as in api/ folder
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historical News Archive</title>
+ 
+</head>
+<body>
+  <h1>Historical News Archive</h1>
+  <p>Search through historical news articles to discover past events</p>
+
+  <div class="search-box">
+    <input type="text" id="searchTerm" class="search-input" placeholder="Search historical news...">
+    <button class="search-button" onclick="searchHistoricalNews()">Search</button>
+
+    <div style="margin-top: 10px;">
+      <label>Date Range</label><br>
+      <input type="date" id="dateFrom"> to
+      <input type="date" id="dateTo">
+    </div>
+
+    <div style="margin-top: 10px;">
+      <label>Category</label><br>
+      <select id="category">
+        <option>All Categories</option>
+        <option>Politics</option>
+        <option>Sports</option>
+        <option>Technology</option>
+        <option>Economy</option>
+      </select>
+    </div>
+
+    <div style="margin-top: 10px;">
+      <label>Sort By</label><br>
+      <select id="sortBy">
+        <option>Relevance</option>
+        <option>Date Ascending</option>
+        <option>Date Descending</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="info-text">
+    Enter a search term to find historical news articles<br>
+    <small>Search for events, people, or topics to discover historical context</small>
+  </div>
+
+  <script>
+    function searchHistoricalNews() {
+      const term = document.getElementById('searchTerm').value;
+      const from = document.getElementById('dateFrom').value;
+      const to = document.getElementById('dateTo').value;
+      const category = document.getElementById('category').value;
+      const sortBy = document.getElementById('sortBy').value;
+
+      //Placeholer PHP function
+      const result = callPHPFunction('searchHistoricalArticles', {
+        searchTerm: term,
+        dateFrom: from,
+        dateTo: to,
+        category: category,
+        sort: sortBy
+      });
+
+      console.log("Search Result:", result);
+      alert("Imaginary PHP function called. Check console for parameters.");
+    }
+
+    function callPHPFunction(functionName, params) {
+      // Simulate PHP call with dummy object
+      console.log(`Calling PHP function: ${functionName} with`, params);
+      return { status: 'success', data: [] }; // Dummy return
+    }
+  </script>
+</body>
+</html>
