@@ -1,5 +1,5 @@
-// Roha to Laiba and Manail : find dummy php function on line 59
-// This needs to be changed to whatever the php function is defined as in api/ folder
+// Roha to Laiba and Manail : all of the javascript functions required in this file
+must be specified in assets/js
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,12 +9,16 @@
   <title>Historical News Archive</title>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+<script src="assets/js/script.js"></script>
+
+
 <body>
   <h1>Historical News Archive</h1>
   <p>Search through historical news articles to discover past events</p>
 
   <div class="search-box">
     <input type="text" id="searchTerm" class="search-input" placeholder="Search historical news...">
+    <!--Do not rename the function below, this is what links the js and this html form-->
     <button class="search-button" onclick="searchHistoricalNews()">Search</button>
 
     <div style="margin-top: 10px;">
@@ -48,33 +52,5 @@
     Enter a search term to find historical news articles<br>
     <small>Search for events, people, or topics to discover historical context</small>
   </div>
-
-  <script>
-    function searchHistoricalNews() {
-      const term = document.getElementById('searchTerm').value;
-      const from = document.getElementById('dateFrom').value;
-      const to = document.getElementById('dateTo').value;
-      const category = document.getElementById('category').value;
-      const sortBy = document.getElementById('sortBy').value;
-
-      //Placeholer PHP function
-      const result = callPHPFunction('searchHistoricalArticles', {
-        searchTerm: term,
-        dateFrom: from,
-        dateTo: to,
-        category: category,
-        sort: sortBy
-      });
-
-      console.log("Search Result:", result);
-      alert("Imaginary PHP function called. Check console for parameters.");
-    }
-
-    function callPHPFunction(functionName, params) {
-      // Simulate PHP call with dummy object
-      console.log(`Calling PHP function: ${functionName} with`, params);
-      return { status: 'success', data: [] }; // Dummy return
-    }
-  </script>
 </body>
 </html>
