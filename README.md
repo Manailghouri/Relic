@@ -21,12 +21,12 @@ Then head to `http://localhost:8000/index.html`
 
 EXAMPLE WORKFLOW:
 
-Browser (HTML/JS)
-   ↓
-fetch('db.php') → runs via php -S (localhost:8000)
-   ↓
-db.php connects to MySQL (running via XAMPP)
-   ↓
-MySQL returns data to PHP
-   ↓
-PHP returns data to JavaScript
+- Browser (HTML/JS)
+-    ↓
+- fetch('db.php') → runs via php -S (localhost:8000)
+-    ↓
+- db.php connects to MySQL (running via XAMPP)
+-    ↓
+- MySQL returns data to PHP
+-    ↓
+- PHP returns data to JavaScript
