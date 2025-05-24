@@ -16,3 +16,17 @@ In order to run the file, cd into relic/ (very important step)
 Then `php -S localhost:8000` (if you get command not found error, figure out how to get that command)
 
 Then head to `http://localhost:8000/index.html`
+
+
+
+EXAMPLE WORKFLOW:
+
+Browser (HTML/JS)
+   ↓
+fetch('db.php') → runs via php -S (localhost:8000)
+   ↓
+db.php connects to MySQL (running via XAMPP)
+   ↓
+MySQL returns data to PHP
+   ↓
+PHP returns data to JavaScript
