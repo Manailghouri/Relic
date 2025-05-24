@@ -12,6 +12,28 @@
 
 // test whether the js script is properly loaded
 
+// the first thing to run after the page is loaded;
+// would be to connect to the db
+// this function below will directly run the db.php function to connect to the database
+// optionally i think that php should return the $conn object, so that it may be used by
+// other funcitons in the file (to reduce the number of times db.php is called)
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('db.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'connected') {
+                console.log("✅ DB connection successful!");
+                // You can now call other functions that assume DB is connected
+            } else {
+                console.error("DB connection failed:", data.message);
+            }
+        })
+        .catch(err => {
+            console.error("Could not reach db.php:", err);
+        });
+});
+
 
 function searchHistoricalNews(query) {
     // testing if searchHistoricalNews was called
