@@ -1,9 +1,10 @@
 <?php
-// DB connection
+session_start(); // needed to store results
+
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "news_data"; // 🔁 Change this
+$dbname = "news_data"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -15,12 +16,10 @@ $topic = $_POST["topic"] ?? '';
 $start_date = $_POST["start_date"] ?? '';
 $end_date = $_POST["end_date"] ?? '';
 
-// Validate input
 if (!$topic || !$start_date || !$end_date) {
-    die("❌ Please provide topic and date range.");
+    die("❌ Missing inputs.");
 }
 
-// Prepare SQL query
 $sql = "
     SELECT article_id, title, published_date, url
     FROM Articles
@@ -30,34 +29,27 @@ $sql = "
 ";
 
 $stmt = $conn->prepare($sql);
-$like_topic = "%" . $topic . "%";
+$like_topic = "%$topic%";
 $stmt->bind_param("ssss", $like_topic, $like_topic, $start_date, $end_date);
 
-// Execute and handle results
 if (!$stmt->execute()) {
     die("❌ Query failed: " . $stmt->error);
 }
 
 $result = $stmt->get_result();
+$articles = [];
 
-if ($result->num_rows > 0) {
-    echo "<h3>🔍 Found " . $result->num_rows . " article(s):</h3>";
-    echo "<table border='1'><tr><th>ID</th><th>Title</th><th>Date</th><th>Link</th></tr>";
-
-    while ($row = $result->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>{$row['article_id']}</td>";
-        echo "<td>" . htmlspecialchars($row['title']) . "</td>";
-        echo "<td>{$row['published_date']}</td>";
-        echo "<td><a href='{$row['url']}' target='_blank'>View</a></td>";
-        echo "</tr>";
-    }
-
-    echo "</table>";
-} else {
-    echo "❌ No articles found.";
+while ($row = $result->fetch_assoc()) {
+    $articles[] = $row;
 }
 
 $stmt->close();
 $conn->close();
-?>
+
+// Store results in session
+$_SESSION['articles'] = $articles;
+$_SESSION['query_topic'] = $topic;
+
+// Redirect to result page
+header("Location: results.php");
+exit();
