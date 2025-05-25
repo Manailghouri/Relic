@@ -18,39 +18,39 @@
 // optionally i think that php should return the $conn object, so that it may be used by
 // other funcitons in the file (to reduce the number of times db.php is called)
 
-document.addEventListener('DOMContentLoaded', () => {
-    fetch('db.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'connected') {
-                console.log("✅ DB connection successful!");
-                // You can now call other functions that assume DB is connected
-            } else {
-                console.error("DB connection failed:", data.message);
-            }
-        })
-        .catch(err => {
-            console.error("Could not reach db.php:", err);
-        });
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//     fetch('db.php')
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.status === 'connected') {
+//                 console.log("✅ DB connection successful!");
+//                 // You can now call other functions that assume DB is connected
+//             } else {
+//                 console.error("DB connection failed:", data.message);
+//             }
+//         })
+//         .catch(err => {
+//             console.error("Could not reach db.php:", err);
+//         });
+// });
 
 
-function searchHistoricalNews(query) {
-    // testing if searchHistoricalNews was called
-    console.log('searchHistoricalNews() called')
+// function searchHistoricalNews() {
+//     console.log('searchHistoricalNews() called');
 
-    query = 'gahhoaiwhdoa'
-    fetch('../api/get-data.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type' : 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({
-            query: query
-        })
-    })
-    .then(response => response.text())
-    .then(data=> {
-        console.log('PHP Response', data)
-    })
-}
+//     const query = "SELECT * FROM news_table LIMIT 10"; // test query
+
+//     fetch('api/get-data.php', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type' : 'application/x-www-form-urlencoded'
+//         },
+//         body: new URLSearchParams({
+//             query: query
+//         })
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log('PHP Response', data);
+//     });
+// }

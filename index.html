@@ -1,56 +1,25 @@
-// Roha to Laiba and Manail : all of the javascript functions required in this file
-must be specified in assets/js
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Historical News Archive</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <title>Search Articles</title>
 </head>
-<script src="assets/js/script.js"></script>
-
-
 <body>
-  <h1>Historical News Archive</h1>
-  <p>Search through historical news articles to discover past events</p>
+  <h2>Search Historical News</h2>
 
-  <div class="search-box">
-    <input type="text" id="searchTerm" class="search-input" placeholder="Search historical news...">
-    <!--Do not rename the function below, this is what links the js and this html form-->
-    <button class="search-button" onclick="searchHistoricalNews()">Search</button>
+  <form action="api/run-query.php" method="POST">
+    <label for="topic">Topic:</label>
+    <input type="text" id="topic" name="topic" placeholder="e.g., elections" required>
+    <br><br>
 
-    <div style="margin-top: 10px;">
-      <label>Date Range</label><br>
-      <input type="date" id="dateFrom"> to
-      <input type="date" id="dateTo">
-    </div>
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" name="start_date" required>
 
-    <div style="margin-top: 10px;">
-      <label>Category</label><br>
-      <select id="category">
-        <option>All Categories</option>
-        <option>Politics</option>
-        <option>Sports</option>
-        <option>Technology</option>
-        <option>Economy</option>
-      </select>
-    </div>
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date" required>
 
-    <div style="margin-top: 10px;">
-      <label>Sort By</label><br>
-      <select id="sortBy">
-        <option>Relevance</option>
-        <option>Date Ascending</option>
-        <option>Date Descending</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="info-text">
-    Enter a search term to find historical news articles<br>
-    <small>Search for events, people, or topics to discover historical context</small>
-  </div>
+    <br><br>
+    <button type="submit">Search</button>
+  </form>
 </body>
 </html>

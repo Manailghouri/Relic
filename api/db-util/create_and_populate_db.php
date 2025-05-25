@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php';
+require_once '../db.php';
 
 $conn->query("CREATE TABLE IF NOT EXISTS Sources (
     source_id INT AUTO_INCREMENT PRIMARY KEY,
