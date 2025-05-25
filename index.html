@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Search Articles</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Search Historical News</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <h2>Search Historical News</h2>
 
-  <form action="api/run-query.php" method="POST">
-    <label for="topic">Topic:</label>
-    <input type="text" id="topic" name="topic" placeholder="e.g., elections" required>
-    <br><br>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Explore the Past.<br />Understand the Future.</h1>
+      <p>Search Historical News Archives with precision and speed.</p>
+    </div>
+  </section>
 
-    <label for="start_date">Start Date:</label>
-    <input type="date" id="start_date" name="start_date" required>
+  <main>
+    <form action="api/run-query.php" method="POST" id="searchForm" autocomplete="off">
+      <h2>Search Historical News</h2>
 
-    <label for="end_date">End Date:</label>
-    <input type="date" id="end_date" name="end_date" required>
+      <label for="topic">Topic:</label>
+      <input
+        type="text"
+        id="topic"
+        name="topic"
+        placeholder="e.g., elections"
+        required
+        autocomplete="off"
+      />
 
-    <br><br>
-    <button type="submit">Search</button>
-  </form>
+      <label for="start_date">Start Date:</label>
+      <input type="date" id="start_date" name="start_date" required />
+
+      <label for="end_date">End Date:</label>
+      <input type="date" id="end_date" name="end_date" required />
+
+      <button type="submit">Search</button>
+    </form>
+  </main>
+
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
