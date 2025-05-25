@@ -2,15 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Run SQL Query</title>
+  <title>Search Articles</title>
 </head>
 <body>
-  <h2>Enter SQL Query</h2>
+  <h2>Search Historical News</h2>
 
   <form action="api/run-query.php" method="POST">
-    <textarea name="query" rows="5" cols="60" placeholder="SELECT * FROM your_table;" required></textarea>
+    <label for="topic">Topic:</label>
+    <input type="text" id="topic" name="topic" placeholder="e.g., elections" required>
     <br><br>
-    <button type="submit">Run Query</button>
+
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" name="start_date" required>
+
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date" required>
+
+    <br><br>
+    <button type="submit">Search</button>
   </form>
 </body>
 </html>
