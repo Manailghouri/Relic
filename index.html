@@ -3,12 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Search Historical News</title>
+  <title>Relic – Rediscover History Through Headlines</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
+  <header>
+    <!-- Background Video -->
+    <video autoplay muted loop id="bgVideo">
+      <source src="./assets/css/3973260-uhd_3840_2160_25fps.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
 
-  <section class="hero">
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Navbar -->
+    <nav class="section__container nav__container sticky">
+      <div class="nav__logo">
+        <i class="ri-archive-line"></i>
+        <span class="logo-text">Rel<span>ic</span></span>
+      </div>
+
+      <div class="nav__toggle" id="navToggle">
+        <i class="ri-menu-line"></i>
+      </div>
+
+      <div class="nav__menu" id="navMenu">
+        <ul class="nav__links">
+          <li class="link"><a href="#home">Home</a></li>
+          <li class="link"><a href="#about">About Us</a></li>
+        </ul>
+        <button class="btn nav__btn">Contact Us</button>
+      </div>
+    </nav>
+
+    <!-- Header Content -->
+    <div class="section__container header__container" id="home">
+      <div class="header__content fade-in">
+        <h1>Relic: Time-Travel Through Headlines</h1>
+        <p>
+          Dive into decades of journalism with a single search. Relic lets you uncover how events were reported across eras—revealing patterns, bias, echoes, and evolution in global media.
+        </p>
+        <button class="btn">Explore News Archives</button>
+      </div>
+
+      <!-- Search Form -->
+      <div class="header__form glass">
+        <form action="api/run-query.php" method="POST" id="searchForm" autocomplete="off">
+          <h4>Search Historical News</h4>
+
+          <label for="topic">Topic:</label>
+          <input type="text" id="topic" name="topic" placeholder="e.g., Moon Landing, Elections" required />
+
+          <label for="start_date">Start Date:</label>
+          <input type="date" id="start_date" name="start_date" required />
+
+          <label for="end_date">End Date:</label>
+          <input type="date" id="end_date" name="end_date" required />
+
+          <button class="btn form__btn">Search</button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <!-- JavaScript to Toggle Mobile Menu -->
+  <script>
+    const toggleBtn = document.getElementById("navToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    toggleBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("show-nav");
+
+      const icon = toggleBtn.querySelector("i");
+      icon.classList.toggle("ri-menu-line");
+      icon.classList.toggle("ri-close-line");
+    });
+  </script>
+
+  <!-----<section class="hero">
     <div class="hero-content">
       <h1>Explore the Past.<br />Understand the Future.</h1>
       <p>Search Historical News Archives with precision and speed.</p>
@@ -37,7 +111,8 @@
 
       <button type="submit">Search</button>
     </form>
-  </main>
+  </main>----->
+
 
   <script src="assets/js/script.js"></script>
 </body>
