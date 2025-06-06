@@ -5,7 +5,7 @@ $username = "root";
 $password = "";
 $db_name = "news_data";
 
-echo "db.php called"
+echo "db.php called";
 
 $conn = new mysqli($servername, $username, $password, $db_name);
 
