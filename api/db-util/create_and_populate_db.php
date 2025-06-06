@@ -9,8 +9,6 @@ $conn->query("CREATE TABLE IF NOT EXISTS Sources (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB");
 
-
-
 $conn->query("CREATE TABLE IF NOT EXISTS Articles (
     article_id INT AUTO_INCREMENT PRIMARY KEY,
     source_id INT NOT NULL,
@@ -22,15 +20,11 @@ $conn->query("CREATE TABLE IF NOT EXISTS Articles (
     FOREIGN KEY (source_id) REFERENCES Sources(source_id) ON DELETE CASCADE
 ) ENGINE=InnoDB");
 
-
-
 $conn->query("CREATE TABLE IF NOT EXISTS Topics (
     topic_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB");
-
-
 
 $conn->query("CREATE TABLE IF NOT EXISTS ArticleTopics (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -41,28 +35,47 @@ $conn->query("CREATE TABLE IF NOT EXISTS ArticleTopics (
     UNIQUE KEY unique_article_topic (article_id, topic_id)
 ) ENGINE=InnoDB");
 
-
-
+// Insert NEW sources (completely unique names)
 $conn->query("INSERT INTO Sources (name, website_url, language) VALUES
-    ('The Daily News', 'https://dailynews.example.com', 'English'),
-    ('Le Monde', 'https://lemonde.fr', 'French')");
+    ('Global Insights', 'https://globalinsights.example.com', 'English'),
+    ('Tech Frontier', 'https://techfrontier.example.com', 'English'),
+    ('Nature Watch', 'https://naturewatch.org', 'English'),
+    ('Science Daily', 'https://sciencedaily.example.com', 'English'),
+    ('World Sports Network', 'https://wsn.example.com', 'English')");
 
-
+// Insert NEW topics (completely unique, no overlap)
 $conn->query("INSERT INTO Topics (name) VALUES
-    ('Climate Change'),
-    ('Elections 2024')");
+    ('Renewable Energy'),
+    ('Artificial Intelligence'),
+    ('Wildlife Conservation'),
+    ('Space Technology'),
+    ('Global Sports Events'),
+    ('Economic Policies'),
+    ('Health Innovations'),
+    ('Digital Privacy')");
 
-
+// Insert NEW articles linked to the new sources
 $conn->query("INSERT INTO Articles (source_id, title, content, published_date, url) VALUES
-    (1, 'Climate action rises worldwide', 'Countries are committing to reduce carbon emissions through various initiatives...', '2025-04-15', 'https://dailynews.example.com/climate-action'),
-    (2, 'French elections overview', 'A detailed look at France\'s political landscape ahead of the 2024 elections...', '2025-04-10', 'https://lemonde.fr/elections-2024')");
+    (1, 'Renewable energy adoption accelerates globally', 'Countries are investing heavily in solar and wind power...', '2025-05-01', 'https://globalinsights.example.com/renewable-energy'),
+    (2, 'AI breakthroughs in natural language processing', 'Recent models have improved accuracy drastically...', '2025-04-25', 'https://techfrontier.example.com/ai-nlp'),
+    (3, 'Efforts to save endangered species intensify', 'Conservationists are using drones to monitor wildlife...', '2025-04-28', 'https://naturewatch.org/endangered-species'),
+    (4, 'Mars rover sends new data about water presence', 'Findings suggest underground water reserves...', '2025-05-03', 'https://sciencedaily.example.com/mars-rover'),
+    (5, 'Upcoming international soccer championship preview', 'Teams prepare for the biggest event in soccer...', '2025-04-30', 'https://wsn.example.com/soccer-championship'),
+    (1, 'Global economic policies adapting post-pandemic', 'Governments tweak fiscal policies to boost growth...', '2025-04-27', 'https://globalinsights.example.com/economic-policies'),
+    (2, 'New health innovations in wearable tech', 'Devices now monitor vitals in real-time with high accuracy...', '2025-05-02', 'https://techfrontier.example.com/wearables'),
+    (3, 'Concerns over digital privacy rise', 'Users demand stronger encryption and regulations...', '2025-05-04', 'https://naturewatch.org/digital-privacy')");
 
-
+// Link articles to topics
 $conn->query("INSERT INTO ArticleTopics (article_id, topic_id) VALUES
     (1, 1),
-    (2, 2)");
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5),
+    (6, 6),
+    (7, 7),
+    (8, 8)");
 
-
-echo "Schema and data setup complete.";
+echo "Schema and new data setup complete.";
 $conn->close();
 ?>
